@@ -60,7 +60,7 @@ class PackageInstaller:
             cmd: str = f"pip show {package_name.replace('_', '-')} | Select-String -Pattern 'Version'"
             shell_cmd: list[str] = ["powershell.exe", cmd]
         elif system_type in ['Linux', 'Darwin']:
-            cmd: str = f"pip show {package_name.replace('_', '-')} | grep 'Version'"
+            cmd: str = f"pip show {package_name.replace('_', '-')} | grep Version"
             shell_cmd: list[str] = cmd.split()
         else:
             raise NotImplementedError(
