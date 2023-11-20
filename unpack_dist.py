@@ -57,12 +57,10 @@ class PackageInstaller:
     def _get_version_from_system(self, package_name) -> str:
         system_type: str = platform.system()
         if system_type == 'Windows':
-            cmd: str = f"pip show {package_name.replace(
-                '_', '-')} | Select-String -Pattern 'Version'"
+            cmd: str = f"pip show {package_name.replace('_', '-')} | Select-String -Pattern 'Version'"
             shell_cmd: list[str] = ["powershell.exe", cmd]
         elif system_type in ['Linux', 'Darwin']:
-            cmd: str = f"pip show {
-                package_name.replace('_', '-')} | grep 'Version'"
+            cmd: str = f"pip show {package_name.replace('_', '-')} | grep 'Version'"
             shell_cmd: list[str] = cmd.split()
         else:
             raise NotImplementedError(
@@ -77,8 +75,7 @@ class PackageInstaller:
     def _install_package(self, file) -> None:
         package_name, file_version = self._get_package_info(file)
         print(
-            f"Version mismatch for {package_name}! File version: {file_version}, system version: \
-                {self._get_version_from_system(package_name)}.")
+            f"Version mismatch for {package_name}! File version: {file_version}, system version: {self._get_version_from_system(package_name)}.")
         if self.force:
             os.system(f"pip install {file} --force-reinstall")
         else:
@@ -87,8 +84,7 @@ class PackageInstaller:
     def _print_skip_message(self, package_name, version_from_system) -> None:
         if self.force:
             print(
-                f"The same version {version_from_system} of the {package_name} is installed, but FORCE \
-                    flag set, reinstalling.")
+                f"The same version {version_from_system} of the {package_name} is installed, but FORCE flag set, reinstalling.")
         else:
             print(
                 f"The same version {version_from_system} of the {package_name} is installed, skipping.")
