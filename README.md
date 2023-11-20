@@ -17,7 +17,7 @@ The script purpose is to consume the contents of folder `dist` usually used by P
 
 What needs to be improved:
 
--   rewrite with OOP and DRY approach
--   add checking the OS type and setting the version verification based on it
--   add more version identifiers to be skipped by the whole installation step, except of `.dev`
--   make the version skipping partly optional
+-   [*] rewrite with OOP and DRY approach
+-   [*] add checking the OS type and setting the version verification based on it
+-   [ ] add more version identifiers to be skipped by the whole installation step, except of `.dev`
+-   [ ] make the version skipping partly optional
